@@ -1,8 +1,6 @@
 package ru.netology.stats;
 
 
-import java.util.Arrays;
-
 public class SalesStatistics {
 
 
@@ -58,13 +56,15 @@ public class SalesStatistics {
 
 
     public int monthsOfSalesBelowAverage(int[] sales) {
+
+
+        double average = averageSales(sales);
         int minSales = 0;
+        for (int sale : sales) {
 
-        double salesAmount = Arrays.stream(sales).sum();
-        double averageSales = (salesAmount / sales.length);
-        for (int i = 0; i < sales.length; i++) {
-
-            if (sales[i] < averageSales) minSales++;
+            if (sale < average) {
+                minSales++;
+            }
 
 
         }
@@ -75,15 +75,13 @@ public class SalesStatistics {
 
 
     public int monthsOfSalesBeMoreAverage(int[] sales) {
+        double average = averageSales(sales);
         int maxSales = 0;
+        for (int sale : sales) {
 
-        double salesAmount = Arrays.stream(sales).sum();
-        double averageSales = (salesAmount / sales.length);
-        for (int i = 0; i < sales.length; i++) {
-
-            if (sales[i] < averageSales) maxSales++;
-
-
+            if (sale > average) {
+                maxSales++;
+            }
         }
         return maxSales;
 
